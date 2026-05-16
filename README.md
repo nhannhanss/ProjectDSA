@@ -220,16 +220,4 @@ food.spawn(w, h, snake.get_body())
 
 ---
 
-## 🚀 Thứ tự làm
 
-```
-Tuần 1:
-  Người 1: circular_list → snake (draft)
-  Người 2: renderer → input_handler (draft)
-
-Tuần 2:
-  Người 1: food + hoàn thiện snake
-  Người 2: game.cpp + ghép
-
-Tuần 3: Test, fix bug, viết báo cáo
-```
