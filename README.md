@@ -5,7 +5,7 @@
 ##### - Chạy trong terminal: 
 g++ -std=c++17 main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp -o snake_game.exe
    Ko lỗi gì thì chạy cái này: .\snake_game.exe
-###### Lưu ý: Phải cd về chỗ chứa file trước: vd: cd E:   
+###### Lưu ý: Với ai chay terminal trên win phải cd về chỗ chứa file trước: vd: cd E:   
 ---
 
 ## 📁 Cây thư mục
