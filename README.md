@@ -4,7 +4,6 @@
 #### - Tải tất cả file về
 ##### - Chạy trong terminal: 
 g++ -std=c++17 -o snake_game main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp
-   snake_game.exe
    Ko lỗi gì thì chạy cái này: .\snake_game.exe
 ###### Lưu ý: Phải cd về chỗ chứa file trước: vd: cd E:   
 ---
