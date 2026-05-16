@@ -1,4 +1,4 @@
-# 🐍 Snake Game - DSA Project
+# 🐍 Snake Game - DSA Projectx
 ## Cấu trúc module (2 người)
 ### HOW TO USE
 #### CHẠY TRONG TERMINAL: 
