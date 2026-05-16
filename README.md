@@ -4,6 +4,7 @@
 #### CHẠY TRONG TERMINAL: 
 g++ -std=c++17 -o snake_game main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp
    snake_game.exe
+##### Lưu ý: Phải cd về chỗ chứa thư mục trước: vd: cd E:   
 ---
 
 ## 📁 Cây thư mục
