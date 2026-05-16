@@ -1,7 +1,7 @@
 # 🐍 Snake Game - DSA Project
 ## Cấu trúc module (2 người)
-** HOW TO USE
-CHẠY TRONG TERMINAL: 
+### HOW TO USE
+#### CHẠY TRONG TERMINAL: 
 g++ -std=c++17 -o snake_game main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp
    snake_game.exe
 ---
