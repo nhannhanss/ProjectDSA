@@ -1,5 +1,7 @@
 #include "game.h"
+#include "data_manager.h"
 #include <iostream>
+#include <string>
 #ifdef _WIN32
 #include <windows.h>
 #else
@@ -39,6 +41,33 @@ void Game::run() {
     }
 
     renderer.draw_game_over(score);
+    
+    // Clear the input buffer if there are any leftover characters
+    while (std::cin.rdbuf()->in_avail() > 0) {
+        std::cin.get();
+    }
+    
+    std::cout << "\nGame Over! Your score: " << score << "\n";
+    std::cout << "Enter your name for the leaderboard: ";
+    std::string playerName;
+    std::getline(std::cin, playerName);
+    if (playerName.empty()) {
+        playerName = "Anonymous";
+    }
+
+    DataManager dm;
+    dm.loadData();
+    dm.addData(playerName, score);
+    dm.sortLeaderboard();
+    dm.saveData();
+
+    std::cout << "\n--- TOP HIGHSCORES ---\n";
+    const auto& leaderboard = dm.getLeaderboard();
+    for(size_t i = 0; i < 5 && i < leaderboard.size(); ++i) {
+        std::cout << i + 1 << ". " << leaderboard[i].name << " - " << leaderboard[i].score << "\n";
+    }
+    std::cout << "----------------------\n";
+    std::cout << "Press Enter to exit...";
     std::cin.get();
 }
 
