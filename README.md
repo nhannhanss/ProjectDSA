@@ -26,7 +26,7 @@ Bạn có thể sử dụng `Makefile` được cung cấp sẵn để tự đ�
 
 1. **Mở Terminal/Command Prompt** và di chuyển tới thư mục gốc của dự án:
    ```bash
-   cd du_ong_dan_den_ProjectDSA
+   cd ...\ProjectDSA
    ```
 
 2. **Biên dịch trò chơi:**
