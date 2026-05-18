@@ -1,223 +1,98 @@
-# 🐍 Snake Game - DSA Projectx
-## Cấu trúc module (2 người)
-### HOW TO USE
-#### - Tải tất cả file về
-##### - Chạy trong terminal: 
-g++ -std=c++17 main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp -o snake_game.exe
-   Ko lỗi gì thì chạy cái này: .\snake_game.exe
-###### Lưu ý: Với ai chay terminal trên win phải cd về chỗ chứa file trước: vd: cd E:   
+# 🐍 Snake Game - DSA Project
+
+**ProjectDSA** là một dự án đồ án môn học Cấu trúc Dữ liệu & Giải thuật (CTDL&GT). Trò chơi "Rắn săn mồi" kinh điển được lập trình bằng C++ trong môi trường Console, minh họa việc áp dụng cấu trúc dữ liệu **Danh sách liên kết vòng (Circular Linked List)** vào thực tiễn quản lý đối tượng trong game.
+
 ---
 
-## 📁 Cây thư mục
+## 🌟 Tính Năng Nổi Bật
 
-```
-snake_game/
-├── README.md
-├── main.cpp              ← điểm khởi động (viết chung cuối cùng)
-│
-├── [NGƯỜI 1] — Data Structure & Game Logic
-│   ├── circular_list.h       ← cấu trúc danh sách liên kết vòng
-│   ├── circular_list.cpp
-│   ├── snake.h               ← con rắn (dùng DSLK vòng)
-│   ├── snake.cpp
-│   ├── food.h                ← sinh mồi
-│   └── food.cpp
-│
-└── [NGƯỜI 2] — Game Engine & Rendering
-    ├── renderer.h            ← vẽ bản đồ ra console
-    ├── renderer.cpp
-    ├── input_handler.h       ← nhận phím bấm
+- **Cấu Trúc Dữ Liệu Chuyên Sâu:** Sử dụng *Circular Linked List* để đại diện cho cơ thể của con rắn, tối ưu hóa việc rắn di chuyển và ăn mồi (O(1) cho các thao tác mấu chốt).
+- **Kiến Trúc Module Hóa:** Code được phân tách rõ ràng (Logic Rắn, Sinh Mồi, Đồ Họa Console, Xử Lý Input, Quản Lý Điểm Số), dễ dàng bảo trì, mở rộng và làm việc nhóm.
+- **Hệ Thống Bảng Xếp Hạng (Leaderboard):** Tích hợp việc đọc/ghi file (`leaderboard.txt`) để lưu trữ và quản lý kỷ lục người chơi một cách bền vững.
+- **Input Không Chờ (Non-blocking):** Nhận tương tác phím mượt mà không làm trì hoãn vòng lặp game (sử dụng thư viện hệ thống Windows).
+- **Quản Lý Build Chuyên Nghiệp:** Cung cấp `Makefile` chuẩn hóa quy trình biên dịch game, test hiệu năng và unit test.
+
+---
+
+## 🛠 Hướng Dẫn Cài Đặt và Sử Dụng
+
+### Yêu Cầu Hệ Thống
+- Trình biên dịch C++ (Hỗ trợ chuẩn C++17 trở lên, ví dụ: GCC/MinGW)
+- Make (GNU Make) để chạy tự động quy trình build qua `Makefile`.
+- Nền tảng: Hệ điều hành Windows (game hiện sử dụng `_kbhit` và `getch`).
+
+### Cách Biên Dịch & Chạy Game
+Bạn có thể sử dụng `Makefile` được cung cấp sẵn để tự động hóa quá trình biên dịch.
+
+1. **Mở Terminal/Command Prompt** và di chuyển tới thư mục gốc của dự án:
+   ```bash
+   cd du_ong_dan_den_ProjectDSA
+   ```
+
+2. **Biên dịch trò chơi:**
+   ```bash
+   make game
+   ```
+   *Lệnh này sẽ biên dịch tất cả file source và tạo ra file thực thi `snake_game.exe` trong thư mục `bin/`.*
+
+3. **Chạy trò chơi:**
+   ```bash
+   .\bin\snake_game.exe
+   ```
+
+### Các Lệnh Build Bổ Trợ Khác
+- **Biên dịch toàn bộ (Game + Tests + Performance):** `make all`
+- **Biên dịch Unit Tests:** `make tests` (sau đó chạy thử nghiệm bằng `.\bin\run_tests.exe`)
+- **Dọn dẹp file biên dịch (Object files & Binaries):** `make clean`
+
+---
+
+## 🎮 Cách Chơi
+
+- Sử dụng các phím **W, A, S, D** hoặc **Phím mũi tên** để điều hướng đầu rắn.
+- Điều khiển rắn ăn mồi (ký tự đặc biệt trên bản đồ) để ghi điểm và gia tăng chiều dài.
+- Trò chơi kết thúc nếu rắn đâm vào tường biên hoặc tự cắn vào chính thân mình.
+
+---
+
+## 📁 Cây Thư Mục Dự Án (Folder Tree)
+
+Kiến trúc thư mục được quy hoạch theo chuẩn C/C++ chuyên nghiệp, phân tách rõ ràng mã nguồn (Source), khai báo (Header), file trung gian (Object) và file chạy (Binary).
+
+```text
+ProjectDSA/
+├── Makefile                ← Script cấu hình tự động biên dịch toàn bộ dự án
+├── README.md               ← Tài liệu hướng dẫn chung (File này)
+├── bin/                    ← (Generated) Chứa các file thực thi (.exe) sau khi build
+│   ├── run_perf.exe        ← File đánh giá hiệu năng thuật toán
+│   ├── run_tests.exe       ← File chạy Unit tests
+│   └── snake_game.exe      ← File thực thi chính của trò chơi
+├── data/                   ← Thư mục lưu trữ dữ liệu trò chơi
+│   ├── leaderboard.txt     ← Bảng xếp hạng điểm số cao
+│   └── test_leaderboard.csv
+├── docs/                   ← Tài liệu liên quan đến dự án (Quy chuẩn báo cáo, v.v.)
+│   └── TEST_REPORT_GUIDE.md
+├── include/                ← Chứa toàn bộ Header files (.h) định nghĩa các class/struct
+│   ├── circular_list.h     ← Cấu trúc dữ liệu Circular Linked List
+│   ├── data_manager.h
+│   ├── food.h              ← Khởi tạo và quản lý mồi
+│   ├── game.h              ← Vòng lặp và logic chính của game
+│   ├── input_handler.h     ← Xử lý tín hiệu bàn phím (Non-blocking)
+│   ├── renderer.h          ← Engine vẽ đồ họa trên console
+│   ├── score_manager.h     ← Quản lý và lưu trữ điểm số
+│   └── snake.h             ← Logic con rắn (di chuyển, va chạm, thay đổi kích thước)
+├── obj/                    ← (Generated) Chứa các Object files (.o) sau khi biên dịch source
+└── src/                    ← Chứa các Source code files (.cpp)
+    ├── circular_list.cpp   ← Cài đặt cấu trúc dữ liệu chính
+    ├── food.cpp
+    ├── game.cpp
     ├── input_handler.cpp
-    ├── game.h                ← vòng lặp game chính
-    └── game.cpp
+    ├── main.cpp            ← Điểm khởi động game (Entry point)
+    ├── performance_test.cpp← Script kiểm thử hiệu suất thực tế của DSLK
+    ├── renderer.cpp
+    ├── snake.cpp
+    └── test_snake.cpp      ← Các kịch bản Unit test cho phần logic rắn
 ```
 
 ---
-
-## 👤 NGƯỜI 1 — Data Structure & Logic
-
-### `circular_list.h / .cpp`
-Cài đặt **danh sách liên kết vòng** (yêu cầu môn học).
-
-```cpp
-struct Node {
-    int x, y;       // tọa độ mỗi đốt rắn
-    Node* next;
-};
-
-class CircularLinkedList {
-public:
-    Node* head;
-    int size;
-
-    CircularLinkedList();
-    void push_front(int x, int y);   // thêm đầu (đầu rắn mới)
-    void pop_back();                  // xóa đuôi (rắn di chuyển)
-    void clear();
-    Node* get_tail();                 // lấy đốt cuối
-    bool contains(int x, int y);     // kiểm tra rắn tự cắn
-    void print_all();                 // debug
-};
-```
-
-### `snake.h / .cpp`
-Dùng `CircularLinkedList` để đại diện con rắn.
-
-```cpp
-enum Direction { UP, DOWN, LEFT, RIGHT };
-
-class Snake {
-private:
-    CircularLinkedList body;
-    Direction dir;
-
-public:
-    Snake(int startX, int startY, int initLen);
-
-    void set_direction(Direction newDir);
-    Direction get_direction();
-
-    void move();                      // di chuyển: push_front + pop_back
-    void grow();                      // ăn mồi: push_front, KHÔNG pop_back
-    bool is_self_collision();         // tự cắn?
-    bool is_out_of_bounds(int w, int h); // ra ngoài?
-
-    Node* get_head();
-    CircularLinkedList& get_body();
-    int get_length();
-};
-```
-
-### `food.h / .cpp`
-Quản lý mồi ăn.
-
-```cpp
-class Food {
-public:
-    int x, y;
-
-    Food();
-    void spawn(int boardW, int boardH, CircularLinkedList& snakeBody);
-    // sinh mồi ngẫu nhiên, tránh đè lên thân rắn
-};
-```
-
----
-
-## 👤 NGƯỜI 2 — Game Engine & Rendering
-
-### `renderer.h / .cpp`
-Vẽ toàn bộ màn hình console.
-
-```cpp
-class Renderer {
-private:
-    int width, height;
-
-public:
-    Renderer(int w, int h);
-    void draw(Snake& snake, Food& food, int score);
-    void draw_game_over(int score);
-    void draw_start_screen();
-    void clear_screen();
-
-private:
-    void draw_border();
-    void draw_cell(int x, int y, char symbol);
-};
-```
-
-### `input_handler.h / .cpp`
-Nhận phím bấm không blocking (dùng `_kbhit` / `getch` trên Windows hoặc termios trên Linux).
-
-```cpp
-class InputHandler {
-public:
-    static Direction get_input(Direction currentDir);
-    // W/A/S/D hoặc phím mũi tên
-    // trả về direction mới, hoặc giữ nguyên nếu không bấm
-};
-```
-
-### `game.h / .cpp`
-Vòng lặp game chính — kết nối tất cả module.
-
-```cpp
-class Game {
-private:
-    Snake snake;
-    Food food;
-    Renderer renderer;
-    InputHandler input;
-
-    int score;
-    int speed;       // delay giữa mỗi frame (ms)
-    bool running;
-
-public:
-    Game(int boardW, int boardH);
-    void run();          // vòng lặp chính
-
-private:
-    void update();       // xử lý logic mỗi tick
-    void handle_input();
-    void check_collisions();
-    void increase_difficulty();
-};
-```
-
----
-
-## 🔗 `main.cpp` — Viết chung khi ghép
-
-```cpp
-#include "game.h"
-
-int main() {
-    Game game(20, 20);  // bảng 20x20
-    game.run();
-    return 0;
-}
-```
-
----
-
-## 📋 Phân công chi tiết
-
-| File | Người | Độ khó | Ghi chú |
-|------|-------|--------|---------|
-| `circular_list.h/cpp` | **Người 1** | ⭐⭐⭐ | Trọng tâm DSA |
-| `snake.h/cpp` | **Người 1** | ⭐⭐⭐ | Dùng DSLK vòng |
-| `food.h/cpp` | **Người 1** | ⭐ | Đơn giản |
-| `renderer.h/cpp` | **Người 2** | ⭐⭐⭐ | Vẽ console |
-| `input_handler.h/cpp` | **Người 2** | ⭐⭐ | Xử lý phím |
-| `game.h/cpp` | **Người 2** | ⭐⭐⭐ | Vòng lặp chính |
-| `main.cpp` | **Cả hai** | ⭐ | Ghép cuối cùng |
-
----
-
-## ⚙️ Giao diện giữa 2 người (Interface)
-
-Người 2 cần dùng các method sau từ Người 1:
-
-```cpp
-// Từ Snake:
-snake.move();
-snake.grow();
-snake.set_direction(dir);
-snake.get_head()->x, ->y
-snake.get_length()
-snake.is_self_collision()
-snake.is_out_of_bounds(w, h)
-snake.get_body()         // để Renderer vẽ thân rắn
-
-// Từ Food:
-food.x, food.y
-food.spawn(w, h, snake.get_body())
-```
-
-> **Quan trọng:** Người 1 cần hoàn thiện header (`.h`) trước để Người 2 có thể code song song mà không cần chờ implementation xong.
-
----
-
-
+*Đồ án thể hiện việc áp dụng trực tiếp lý thuyết Cấu trúc Dữ liệu vào xây dựng một ứng dụng thời gian thực (Real-time application) có tương tác trọn vẹn.*
