@@ -25,7 +25,7 @@ make game
 # Chạy trò chơi
 .\bin\snake_game.exe
 ```
-Cách 2: Nếu không muốn dùng 'Makefile' có thể build bằng g++ truyền thống
+Cách 2: Nếu không muốn dùng `Makefile` có thể build bằng g++ truyền thống
 ```bash
 # Biên dịch
 g++ -std=c++17 main.cpp circular_list.cpp snake.cpp food.cpp renderer.cpp input_handler.cpp game.cpp -o snake_game.exe
