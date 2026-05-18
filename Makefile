@@ -34,24 +34,24 @@ all: $(TARGET) $(TEST_TARGET) $(PERF_TARGET)
 game: $(TARGET)
 
 $(TARGET): $(OBJS)
-	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+	mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(TEST_TARGET): $(TEST_OBJS)
-	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+	mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(PERF_TARGET): $(PERF_OBJS)
-	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+	mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	if exist $(OBJ_DIR) del /Q $(OBJ_DIR)\*.o
-	if exist $(BIN_DIR) del /Q $(BIN_DIR)\*.exe
+	rm -rf $(OBJ_DIR)/*.o
+	rm -rf $(BIN_DIR)/*.exe
 
 .PHONY: all clean game tests perf
 

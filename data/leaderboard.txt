@@ -1,2 +1,2 @@
-Lam2,30
-Quach Bao Lam,9999
+bao lam,40
+testing,20

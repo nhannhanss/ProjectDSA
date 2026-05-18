@@ -4,7 +4,7 @@
 #include <cassert>
 
 void run_performance_tests() {
-    DataManager dm("test_leaderboard.csv");
+    DataManager dm("data/test_leaderboard.csv");
     const int DATA_SIZE = 10000;
 
     std::cout << "--- BAT DAU PERFORMANCE TEST (" << DATA_SIZE << " records) ---\n";
@@ -26,7 +26,7 @@ void run_performance_tests() {
               << " ms\n";
 
     // 3. Load data
-    DataManager dm2("test_leaderboard.csv");
+    DataManager dm2("data/test_leaderboard.csv");
     start = std::chrono::high_resolution_clock::now();
     dm2.loadData();
     end = std::chrono::high_resolution_clock::now();
@@ -56,7 +56,7 @@ void run_performance_tests() {
     // Print Top 10
     std::cout << "\n--- TOP 10 PLAYERS ---\n";
     const auto& leaderboard = dm2.getLeaderboard();
-    for(int i = 0; i < 10 && i < leaderboard.size(); ++i) {
+    for(size_t i = 0; i < 10 && i < leaderboard.size(); ++i) {
         std::cout << i + 1 << ". " << leaderboard[i].name << " - " << leaderboard[i].score << "\n";
     }
 

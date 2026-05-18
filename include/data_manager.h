@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cstdlib>
+#include <filesystem>
 
 struct PlayerData {
     std::string name;
@@ -18,19 +19,26 @@ private:
     std::vector<PlayerData> leaderboard;
 
 public:
-    DataManager(const std::string& file = "leaderboard.txt") : filename(file) {}
+    DataManager(const std::string& file = "data/leaderboard.txt") : filename(file) {}
 
     void addData(const std::string& name, int score) {
         leaderboard.push_back({name, score});
     }
 
     void saveData() const {
+        std::filesystem::path p(filename);
+        if (p.has_parent_path()) {
+            std::filesystem::create_directories(p.parent_path());
+        }
+        
         std::ofstream file(filename);
         if (file.is_open()) {
             for (const auto& p : leaderboard) {
                 file << p.name << "," << p.score << "\n";
             }
             file.close();
+        } else {
+            std::cerr << "Error: Cannot open file for writing: " << filename << "\n";
         }
     }
 
@@ -48,6 +56,8 @@ public:
                 }
             }
             file.close();
+        } else {
+            std::cerr << "Error: Cannot open file for reading: " << filename << "\n";
         }
     }
 
