@@ -216,8 +216,6 @@ food.x, food.y
 food.spawn(w, h, snake.get_body())
 ```
 
-> **Quan trọng:** Người 1 cần hoàn thiện header (`.h`) trước để Người 2 có thể code song song mà không cần chờ implementation xong.
 
----
 
 
