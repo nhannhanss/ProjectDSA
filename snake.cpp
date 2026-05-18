@@ -55,11 +55,17 @@ Direction Snake::get_direction() const {
 }
 
 bool Snake::is_self_collision() const {
-    if (body.head == nullptr || body.size < 2) return false;
+    // Rắn không thể tự cắn nếu độ dài nhỏ hơn 4
+    if (body.head == nullptr || body.size < 4) {
+        return false;
+    }
+
     Node* head = body.head;
-    // Kiểm tra đầu rắn có trùng với bất kỳ đốt nào từ đốt thứ 2 trở đi
     Node* curr = head->next;
-    while (curr != head) {
+
+    // Duyệt qua các đốt còn lại của thân rắn (bỏ qua đầu).
+    // Dùng vòng lặp for với size để tránh lỗi nếu DSLK vòng bị lỗi con trỏ.
+    for (int i = 0; i < body.size - 1; ++i) {
         if (curr->x == head->x && curr->y == head->y) return true;
         curr = curr->next;
     }
