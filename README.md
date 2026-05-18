@@ -15,7 +15,7 @@ snake_game/
 ├── README.md
 ├── main.cpp              ← điểm khởi động (viết chung cuối cùng)
 │
-├── [NGƯỜI 1] — Data Structure & Game Logic
+├── — Data Structure & Game Logic
 │   ├── circular_list.h       ← cấu trúc danh sách liên kết vòng
 │   ├── circular_list.cpp
 │   ├── snake.h               ← con rắn (dùng DSLK vòng)
@@ -23,7 +23,7 @@ snake_game/
 │   ├── food.h                ← sinh mồi
 │   └── food.cpp
 │
-└── [NGƯỜI 2] — Game Engine & Rendering
+└── — Game Engine & Rendering
     ├── renderer.h            ← vẽ bản đồ ra console
     ├── renderer.cpp
     ├── input_handler.h       ← nhận phím bấm
@@ -34,7 +34,7 @@ snake_game/
 
 ---
 
-## 👤 NGƯỜI 1 — Data Structure & Logic
+##  — Data Structure & Logic
 
 ### `circular_list.h / .cpp`
 Cài đặt **danh sách liên kết vòng** (yêu cầu môn học).
@@ -104,7 +104,7 @@ public:
 
 ---
 
-## 👤 NGƯỜI 2 — Game Engine & Rendering
+## 👤 — Game Engine & Rendering
 
 ### `renderer.h / .cpp`
 Vẽ toàn bộ màn hình console.
@@ -184,37 +184,18 @@ int main() {
 
 ## 📋 Phân công chi tiết
 
-| File | Người | Độ khó | Ghi chú |
-|------|-------|--------|---------|
-| `circular_list.h/cpp` | **Người 1** | ⭐⭐⭐ | Trọng tâm DSA |
-| `snake.h/cpp` | **Người 1** | ⭐⭐⭐ | Dùng DSLK vòng |
-| `food.h/cpp` | **Người 1** | ⭐ | Đơn giản |
-| `renderer.h/cpp` | **Người 2** | ⭐⭐⭐ | Vẽ console |
-| `input_handler.h/cpp` | **Người 2** | ⭐⭐ | Xử lý phím |
-| `game.h/cpp` | **Người 2** | ⭐⭐⭐ | Vòng lặp chính |
-| `main.cpp` | **Cả hai** | ⭐ | Ghép cuối cùng |
+| File | Độ khó | Ghi chú |
+|------|--------|---------|
+| `circular_list.h/cpp` |  ⭐⭐⭐ | Trọng tâm DSA |
+| `snake.h/cpp` |  ⭐⭐⭐ | Dùng DSLK vòng |
+| `food.h/cpp` |  ⭐ | Đơn giản |
+| `renderer.h/cpp` |  ⭐⭐⭐ | Vẽ console |
+| `input_handler.h/cpp` |  ⭐⭐ | Xử lý phím |
+| `game.h/cpp` | ⭐⭐⭐ | Vòng lặp chính |
+| `main.cpp` |  ⭐ | Ghép cuối cùng |
 
 ---
 
-## ⚙️ Giao diện giữa 2 người (Interface)
-
-Người 2 cần dùng các method sau từ Người 1:
-
-```cpp
-// Từ Snake:
-snake.move();
-snake.grow();
-snake.set_direction(dir);
-snake.get_head()->x, ->y
-snake.get_length()
-snake.is_self_collision()
-snake.is_out_of_bounds(w, h)
-snake.get_body()         // để Renderer vẽ thân rắn
-
-// Từ Food:
-food.x, food.y
-food.spawn(w, h, snake.get_body())
-```
 
 
 
