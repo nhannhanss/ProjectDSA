@@ -88,7 +88,7 @@ void Renderer::draw_start_screen() {
     std::cout << "  / __| _ _  __ _ | |__ ___  \n";
     std::cout << "  \\__ \\| ' \\/ _` || / // -_) \n";
     std::cout << "  |___/|_||_\\__,_||_\\_\\\\___|  \n";
-    std::cout << "\n  DSA Project — Circular Linked List\n";
+    std::cout << "\n  DSA Project - Circular Linked List\n";
     std::cout << "\n  Press Enter to start...\n";
     std::cin.get();
 }

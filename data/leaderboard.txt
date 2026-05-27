@@ -1,2 +1,3 @@
+player,9999
 bao lam,40
 testing,20
